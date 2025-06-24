@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/app
+      - ~/.aws:/root/.aws:ro
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=development
+      - AWS_PROFILE=${AWS_PROFILE:-bedrock}
+    command: flask run --host=0.0.0.0
+
+  frontend:
+    image: nginx:alpine
+    ports:
+      - "8000:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+    depends_on:
+      - backend
