@@ -10,7 +10,7 @@ customer-support-chatbot/
 │   ├── app.py             # Main Flask application
 │   ├── support_chatbot.py # Chatbot logic with AWS Bedrock
 │   ├── requirements.txt   # Python dependencies
-│   └── .env.example       # Environment variables template
+│   └── .env               # Environment variables template
 │
 └── frontend/              # Web interface
     ├── index.html         # HTML structure
